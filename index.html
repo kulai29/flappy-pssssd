@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Flappy Pssssd</title>
-        <meta name="viewport" content="width=768">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- <script src="https://www.createjs.com/Demos/EaselJS/assets/preloadjs-NEXT.min.js"></script> -->
         <script src="createjs-2013.09.25.min.js"></script>
         <script src="ndgmr.Collision.js"></script>
@@ -49,6 +49,29 @@
             canvas {
                 margin-bottom: -4px;
                 height: 100%;
+            }
+
+            /* For Mobile */
+            @media screen and (max-width: 540px) {
+                canvas {
+                    padding: 0;
+                    margin: auto;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    /* position: absolute; */
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                }
+            }
+
+            /* For Tablets */
+            @media screen and (min-width: 540px) and (max-width: 780px) {
+                .view {
+                    width: 600px;
+                }
             }
         </style>
 
