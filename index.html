@@ -104,7 +104,9 @@
 
             var counterShow = false;
 
-            // var alarmAudio = new Audio('./audio/sfx_alarm.mp3');
+            var alarmAudio = new Audio('./audio/sfx_alarm.mp3');
+            var swooshAudio = new Audio('./audio/sfx_swooshing.mp3');
+            var hitAudio = new Audio('./audio/sfx_hit.mp3');
 
             document.onkeydown = handleKeyDown;
 
@@ -146,8 +148,6 @@
 
             function handleComplete() {
                 // console.log('HANDLE COMPLETE...');
-
-                // alarmAudio.play();
 
                 background = new createjs.Shape();
                 background.graphics.beginBitmapFill(loader.getResult("background")).drawRect(2,6,w,h);
@@ -222,6 +222,7 @@
                 if (!dead) {
                     // var audio = new Audio('./audio/sfx_swooshing.mp3');
                     // audio.play();
+                    swooshAudio.play();
 
                     createjs.Tween.removeTweens ( bird )
                     bird.gotoAndPlay("jump");
@@ -241,7 +242,7 @@
             function restart() {
                 // console.log('RESTART...');
 
-                // alarmAudio.pause();
+                alarmAudio.pause();
                 //hide anything on stage and show the score
                 pipes.removeAllChildren();
                 createjs.Tween.get(start).to({y:start.y + 10}, 50).call(removeStart)
@@ -267,10 +268,12 @@
                 // var audio = new Audio('./audio/sfx_hit.mp3');
                 // audio.play();
 
-                // setTimeout(function()
-                // {
-                //     alarmAudio.play();
-                // }, 750);
+                hitAudio.play();
+
+                setTimeout(function()
+                {
+                    alarmAudio.play();
+                }, 750);
 
                 dead = true
                 bird.gotoAndPlay("dive");
