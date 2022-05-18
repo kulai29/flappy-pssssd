@@ -59,7 +59,7 @@
                     display: block;
                     width: 100%;
                     height: 100%;
-                    /* position: absolute; */
+                    position: absolute;
                     top: 0;
                     bottom: 0;
                     left: 0;
@@ -69,8 +69,17 @@
 
             /* For Tablets */
             @media screen and (min-width: 540px) and (max-width: 780px) {
-                .view {
-                    width: 600px;
+                canvas {
+                    padding: 0;
+                    margin: auto;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
                 }
             }
         </style>
@@ -95,7 +104,7 @@
 
             var counterShow = false;
 
-            var alarmAudio = new Audio('./audio/sfx_alarm.mp3');
+            // var alarmAudio = new Audio('./audio/sfx_alarm.mp3');
 
             document.onkeydown = handleKeyDown;
 
@@ -211,8 +220,8 @@
                 // console.log('HANDLE JUMP START...');
 
                 if (!dead) {
-                    var audio = new Audio('./audio/sfx_swooshing.mp3');
-                    audio.play();
+                    // var audio = new Audio('./audio/sfx_swooshing.mp3');
+                    // audio.play();
 
                     createjs.Tween.removeTweens ( bird )
                     bird.gotoAndPlay("jump");
@@ -232,7 +241,7 @@
             function restart() {
                 // console.log('RESTART...');
 
-                alarmAudio.pause();
+                // alarmAudio.pause();
                 //hide anything on stage and show the score
                 pipes.removeAllChildren();
                 createjs.Tween.get(start).to({y:start.y + 10}, 50).call(removeStart)
@@ -255,13 +264,13 @@
             function die() {
                 // console.log('DIE...');
 
-                var audio = new Audio('./audio/sfx_hit.mp3');
-                audio.play();
+                // var audio = new Audio('./audio/sfx_hit.mp3');
+                // audio.play();
 
-                setTimeout(function()
-                {
-                    alarmAudio.play();
-                }, 750);
+                // setTimeout(function()
+                // {
+                //     alarmAudio.play();
+                // }, 750);
 
                 dead = true
                 bird.gotoAndPlay("dive");
