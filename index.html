@@ -104,6 +104,9 @@
 
             var counterShow = false;
 
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            const audioCtx = new AudioContext();
+
             var alarmAudio = new Audio('./audio/sfx_alarm.mp3');
             var swooshAudio = new Audio('./audio/sfx_swooshing_trim.mp3');
             var hitAudio = new Audio('./audio/sfx_hit.mp3');
@@ -144,6 +147,8 @@
                 loader = new createjs.LoadQueue(false);
                 loader.addEventListener("complete", handleComplete);
                 loader.loadManifest(manifest);
+
+                loadAudio('./audio/sfx_swooshing_trim.mp3');
             }
 
             function handleComplete() {
@@ -222,14 +227,14 @@
                 if (!dead) {
                     // var audio = new Audio('./audio/sfx_swooshing.mp3');
                     // audio.play();
-                    // swooshAudio.play();
+                    swooshAudio.play();
 
                     createjs.Tween.removeTweens ( bird )
                     bird.gotoAndPlay("jump");
                     startJump = true
                     if (!started) {
                         started = true
-                        counterShow = true                        
+                        counterShow = true
                     }
                 }
 
